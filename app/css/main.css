@@ -1,0 +1,264 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap");
+@import "./vendor/normalize.css";
+:root {
+  --font-family: "Open Sans";
+  --content-width: 1170px;
+  --container-offset: 15px;
+  --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
+}
+
+/* stylelint-disable */
+/* stylelint-disable */
+/* stylelint-disable */
+.custom-checkbox__field:checked + .custom-checkbox__content::after {
+  opacity: 1;
+}
+
+.custom-checkbox__field:focus + .custom-checkbox__content::before {
+  outline: 2px solid #f00;
+  outline-offset: 2px;
+}
+
+.custom-checkbox__field:disabled + .custom-checkbox__content {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* stylelint-disable */
+/* stylelint-disable */
+@font-face {
+  font-family: "SanFrancisco";
+  src: url("../fonts/../fonts/SFMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Droid";
+  src: url("../fonts/../fonts/DroidSansMono.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "3270";
+  src: url("../fonts/../fonts/3270-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "FiraCode";
+  src: url("../fonts/../fonts/FiraCode-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "CascadiaCode";
+  src: url("../fonts/../fonts/CascadiaCode.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+}
+
+.page__body {
+  background: #000;
+  color: #cccccc;
+  font-size: 13px;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 15px 5px 5px 5px;
+}
+
+.main-border {
+  border: 2px solid #47484c;
+  padding: 10px 4px 4px 4px;
+  position: relative;
+  z-index: 1;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+.main-title {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  padding: 0 10px;
+  background: #000;
+}
+
+.sanfrancisco {
+  font-family: "SanFrancisco";
+}
+
+.droid {
+  font-family: "Droid";
+}
+
+.f3270 {
+  font-family: "3270";
+}
+
+.firacode {
+  font-family: "FiraCode";
+}
+
+.cascadiacode {
+  font-family: "CascadiaCode";
+}
+
+.ubuntumono {
+  font-family: "Ubuntu Mono", monospace;
+}
+
+.box {
+  border: 2px solid #808080;
+  position: relative;
+  padding: 12px 7px 7px 7px;
+}
+.box--portfolio {
+  height: 100%;
+}
+
+.portfolio-list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  row-gap: 12px;
+  -webkit-column-gap: 6px;
+  -moz-column-gap: 6px;
+  column-gap: 6px;
+}
+
+.wrapper {
+  padding: 15px 10px 10px 10px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 0.6fr 1.4fr;
+  grid-template-columns: 0.6fr 1.4fr;
+  -ms-grid-rows: 1fr;
+  grid-template-rows: 1fr;
+  row-gap: 0;
+  -webkit-column-gap: 6px;
+  -moz-column-gap: 6px;
+  column-gap: 6px;
+}
+
+.status-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.status-bar__item {
+  padding: 4px 8px 4px 20px;
+  position: relative;
+}
+.status-bar__item::after {
+  content: "";
+  position: absolute;
+  -webkit-transform: translate(100%, 0);
+  -ms-transform: translate(100%, 0);
+  transform: translate(100%, 0);
+  z-index: 10;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 11px 0 11px 10px;
+}
+.status-bar__path {
+  background: #262f77;
+}
+.status-bar__path::after {
+  border-color: transparent transparent transparent #262f77;
+}
+.status-bar__path::before {
+  content: "";
+  position: absolute;
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+  z-index: 10;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 11px 0 11px 10px;
+  border-color: transparent transparent transparent #000000;
+}
+.status-bar__git {
+  background: #e8e517;
+  color: #000000;
+  margin: 0 25px 0 0;
+}
+.status-bar__git::after {
+  border-color: transparent transparent transparent #e8e517;
+}
+.status-bar__cursor {
+  background: #efefef;
+  width: 10px;
+  height: 20px;
+  -webkit-animation-name: blink;
+  animation-name: blink;
+  -webkit-animation-timing-function: cubic-bezier(0, 1.26, 0.18, 0.96);
+  animation-timing-function: cubic-bezier(0, 1.26, 0.18, 0.96);
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+/*# sourceMappingURL=main.css.map */
