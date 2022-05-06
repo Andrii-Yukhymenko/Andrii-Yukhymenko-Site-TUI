@@ -9,21 +9,22 @@
 @import "./components/header";
 
 .page__body {
-  background: #000;
-  color: #cccccc;
+  background: $black;
+  color: $white;
   font-size: 13px;
 }
 
 .container {
-  width: 1200px;
+  width: 1100px;
   margin: 0 auto;
   padding: 15px 5px 5px 5px;
   //height: 100vh;
 }
 
 .main-border {
-  border: 2px solid #47484c;
-  padding: 10px 4px 4px 4px;
+  //border: 2px solid #47484c;
+  border: $border;
+  padding: 16px 6px 6px 6px;
   position: relative;
   z-index: 1;
   //overflow: scroll;
@@ -40,7 +41,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 0 10px;
-  background: #000;
+  background: $black;
+  white-space: nowrap;
 }
 .sanfrancisco {
   font-family: "SanFrancisco";
@@ -67,6 +69,12 @@
   &--portfolio {
     height: 100%;
   }
+  &--about-me {
+    margin: 0px 0px 12px 0px;
+  }
+  &--commands {
+    margin: 0px 0px 0px 0px;
+  }
 }
 
 .portfolio-list {
@@ -74,6 +82,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   row-gap: 12px;
   column-gap: 6px;
+  max-height: 50%;
 }
 .portfolio-list__item {
 }
@@ -82,9 +91,9 @@
 }
 
 .wrapper {
-  padding: 15px 10px 10px 10px;
+  //padding: 15px 10px 10px 10px;
   display: grid;
-  grid-template-columns: 0.6fr 1.4fr;
+  grid-template-columns: 1.6fr 1.4fr;
   grid-template-rows: 1fr;
   row-gap: 0;
   column-gap: 6px;
@@ -93,10 +102,11 @@
 .about-me {
 }
 
-.status-bar {
-  //background: #af7070;
+.console-bar {
+  margin: 6px 0 0 0;
   display: flex;
   align-items: center;
+  position: relative;
   &__item {
     padding: 4px 8px 4px 20px;
     position: relative;
@@ -113,41 +123,80 @@
       border-width: 11px 0 11px 10px;
     }
   }
-  &__path {
-    background: #262f77;
+  &__user {
+    //background: #de382b;
+    background: $console-user-bg;
+    color: $console-user-text;
     &::after {
-      border-color: transparent transparent transparent #262f77;
+      //border-color: transparent transparent transparent #de382b;
+      border-color: transparent transparent transparent $console-user-bg;
     }
-    &::before {
-      content: "";
-      position: absolute;
-      transform: translate(0, 0);
-      z-index: 10;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 11px 0 11px 10px;
-      border-color: transparent transparent transparent #000000;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+  }
+  &__path {
+    //background: #262f77;
+    background: $console-path-bg;
+    color: $console-path-text;
+    &::after {
+      //border-color: transparent transparent transparent #262f77;
+      border-color: transparent transparent transparent $console-path-bg;
     }
   }
   &__git {
-    background: #e8e517;
-    color: #000000;
+    //background: #e8e517;
+    background: $console-git-bg;
+    color: $console-git-text;
     margin: 0 25px 0 0;
     &::after {
-      border-color: transparent transparent transparent #e8e517;
+      //border-color: transparent transparent transparent #fffa37;
+      border-color: transparent transparent transparent $console-git-bg;
     }
   }
-  &__cursor {
-    background: #efefef;
-    width: 10px;
+  &__clock{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 26px;
+    background: $console-clock-bg;
+    color: $console-clock-text;
+  }
+}
+
+.console-bar-form {
+  width: 40%;
+  position: relative;
+  &__input {
+    width: 100%;
+    background: inherit;
+    border: none;
+    outline: none;
+    color: $white;
+    position: relative;
     height: 20px;
+    font-size: 15px;
+  }
+
+  &__fake-caret {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: $white;
+    width: 10px;
+    height: 100%;
     animation-name: blink;
     animation-timing-function: cubic-bezier(0, 1.26, 0.18, 0.96);
     animation-duration: 1.5s;
     animation-iteration-count: infinite;
+  }
+  &__error{
+    color: $red;
   }
 }
 
