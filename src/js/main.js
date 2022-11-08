@@ -1,3 +1,7 @@
+const TELEGRAM_USERNAME = "kysyjefo";
+const GITHUB_USERNAME = "Andrii-Yukhymenko";
+const INSTAGRAM_USERNAME = "_andriy_y";
+
 const consoleFormInput = document.querySelector(".console-bar-form__input");
 const consoleForm = document.querySelector(".console-bar-form");
 const fakeCaret = document.querySelector(".console-bar-form__fake-caret");
@@ -9,19 +13,19 @@ const consoleCommands = [
   {
     command: "instagram",
     callback: () => {
-      window.open("https://instagram.com");
+      window.open(`https://instagram.com/${INSTAGRAM_USERNAME}`);
     },
   },
   {
     command: "telegram",
     callback: () => {
-      window.open("https://telegram.com");
+      window.open(`https://t.me/${TELEGRAM_USERNAME}`);
     },
   },
   {
     command: "github",
     callback: () => {
-      window.open("https://github.com");
+      window.open(`https://github.com/${GITHUB_USERNAME}`);
     },
   },
   {
@@ -50,7 +54,7 @@ const consoleCommands = [
     },
   },
   {
-    command: "me",
+    command: "shark",
     callback: () => {
       avatar.innerText =
         " _________         .    .\n" +
@@ -80,49 +84,62 @@ consoleFormInput.addEventListener(
 consoleFormInput.addEventListener("focusout", (e) => {
   cleanConsoleInput();
   fakeCaret.style.display = "block";
+  // consoleFormInput.removeAttribute('readonly');
+  // consoleFormInput.focus();
 });
 
 consoleForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  consoleFormInput.classList.add("console-bar-form__error");
-  consoleFormInput.value = `The term is not recognized.`;
-  setTimeout(() => cleanConsoleInput(), 1500);
-  consoleCommands.forEach((i) => {
-    console.log(consoleFormInput.value);
-    if (consoleFormInput.value === i.command) {
-      consoleFormInput.value = "";
-      i.callback();
-      consoleFormInput.classList.remove("console-bar-form__error");
-      clearTimeout(() => cleanConsoleInput());
-    }
-  });
-
-  // e.preventDefault();
-  // consoleCommands.forEach((i) => {
-  //   console.log(consoleFormInput.value);
-  //   if (consoleFormInput.value === i.command) {
-  //     consoleFormInput.value = "";
-  //     i.callback();
-  //   } else {
-  //     consoleFormInput.classList.add("console-bar-form__error");
-  //     consoleFormInput.value = `The term is not recognized.`;
-  //     setTimeout(() => cleanConsoleInput(), 1500);
-  //   }
-  // });
-
-  // for (let i of consoleCommands) {
-  //   console.log(consoleFormInput.value);
-  //   if (consoleFormInput.value === i.command) {
-  //     consoleFormInput.value = "";
-  //     i.callback();
-  //     break;
-  //   } else {
-  //     consoleFormInput.classList.add("console-bar-form__error");
-  //     consoleFormInput.value = `The term is not recognized.`;
-  //     setTimeout(() => cleanConsoleInput(), 1500);
-  //   }
-  // }
+  console.log(consoleFormInput.value);
+  if (
+    consoleCommands.some((i) => {
+      return i.command === consoleFormInput.value;
+    })
+  ) {
+    // колбєк если команда валидная
+    // перебираем массив, чтобы найти нашу команду
+    consoleCommands.forEach((i) => {
+      if (i.command === consoleFormInput.value) {
+        i.callback();
+        // clearTimeout(() => cleanConsoleInput());
+      }
+    });
+    consoleFormInput.value = "";
+  } else {
+    // колбэк если команды не существует
+    consoleFormInput.classList.add("console-bar-form__error");
+    consoleFormInput.value = `The term is not recognized.`;
+    // consoleFormInput.setAttribute("disabled", "disabled");
+    setTimeout(() => cleanConsoleInput(), 1200);
+  }
 });
+
+// e.preventDefault();
+// consoleCommands.forEach((i) => {
+//   console.log(consoleFormInput.value);
+//   if (consoleFormInput.value === i.command) {
+//     consoleFormInput.value = "";
+//     i.callback();
+//   } else {
+//     consoleFormInput.classList.add("console-bar-form__error");
+//     consoleFormInput.value = `The term is not recognized.`;
+//     setTimeout(() => cleanConsoleInput(), 1500);
+//   }
+// });
+
+// for (let i of consoleCommands) {
+//   console.log(consoleFormInput.value);
+//   if (consoleFormInput.value === i.command) {
+//     consoleFormInput.value = "";
+//     i.callback();
+//     break;
+//   } else {
+//     consoleFormInput.classList.add("console-bar-form__error");
+//     consoleFormInput.value = `The term is not recognized.`;
+//     setTimeout(() => cleanConsoleInput(), 1500);
+//   }
+// }
+// });
 
 function setClockTime() {
   let date = new Date();

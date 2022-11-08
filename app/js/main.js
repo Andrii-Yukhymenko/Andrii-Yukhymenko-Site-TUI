@@ -3,6 +3,9 @@ var __webpack_exports__ = {};
 /*!************************!*\
   !*** ./src/js/main.js ***!
   \************************/
+var TELEGRAM_USERNAME = "kysyjefo";
+var GITHUB_USERNAME = "Andrii-Yukhymenko";
+var INSTAGRAM_USERNAME = "_andriy_y";
 var consoleFormInput = document.querySelector(".console-bar-form__input");
 var consoleForm = document.querySelector(".console-bar-form");
 var fakeCaret = document.querySelector(".console-bar-form__fake-caret");
@@ -12,17 +15,17 @@ var clock = document.querySelector(".console-bar__clock"); // Список ко�
 var consoleCommands = [{
   command: "instagram",
   callback: function callback() {
-    window.open("https://instagram.com");
+    window.open("https://instagram.com/".concat(INSTAGRAM_USERNAME));
   }
 }, {
   command: "telegram",
   callback: function callback() {
-    window.open("https://telegram.com");
+    window.open("https://t.me/".concat(TELEGRAM_USERNAME));
   }
 }, {
   command: "github",
   callback: function callback() {
-    window.open("https://github.com");
+    window.open("https://github.com/".concat(GITHUB_USERNAME));
   }
 }, {
   command: "dog",
@@ -35,7 +38,7 @@ var consoleCommands = [{
     avatar.innerText = "        __\n" + "     __/o \\_\n" + "     \\____  \\\n" + "         /   \\\n" + "   __   //\\   \\\n" + "__/o \\-//--\\   \\_/\n" + "\\____  ___  \\  |\n" + "     ||   \\ |\\ |\n" + "    _||   _||_||";
   }
 }, {
-  command: "me",
+  command: "shark",
   callback: function callback() {
     avatar.innerText = " _________         .    .\n" + "(..       \\_    ,  |\\  /|\n" + " \\       O  \\  /|  \\ \\/ /\n" + "  \\______    \\/ |   \\  /\n" + "     vvvv\\    \\ |   /  |\n" + "     \\^^^^  ==   \\_/   |\n" + "      `\\_   ===    \\.  |\n" + "      / /\\_   \\ /      |\n" + "      |/   \\_  \\|      /\n" + "            \\_________/\n" + "              ";
   }
@@ -51,51 +54,58 @@ consoleFormInput.addEventListener("focus", function () {
 });
 consoleFormInput.addEventListener("focusout", function (e) {
   cleanConsoleInput();
-  fakeCaret.style.display = "block";
+  fakeCaret.style.display = "block"; // consoleFormInput.removeAttribute('readonly');
+  // consoleFormInput.focus();
 });
 consoleForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  consoleFormInput.classList.add("console-bar-form__error");
-  consoleFormInput.value = "The term is not recognized.";
-  setTimeout(function () {
-    return cleanConsoleInput();
-  }, 1500);
-  consoleCommands.forEach(function (i) {
-    console.log(consoleFormInput.value);
+  console.log(consoleFormInput.value);
 
-    if (consoleFormInput.value === i.command) {
-      consoleFormInput.value = "";
-      i.callback();
-      consoleFormInput.classList.remove("console-bar-form__error");
-      clearTimeout(function () {
-        return cleanConsoleInput();
-      });
-    }
-  }); // e.preventDefault();
-  // consoleCommands.forEach((i) => {
-  //   console.log(consoleFormInput.value);
-  //   if (consoleFormInput.value === i.command) {
-  //     consoleFormInput.value = "";
-  //     i.callback();
-  //   } else {
-  //     consoleFormInput.classList.add("console-bar-form__error");
-  //     consoleFormInput.value = `The term is not recognized.`;
-  //     setTimeout(() => cleanConsoleInput(), 1500);
-  //   }
-  // });
-  // for (let i of consoleCommands) {
-  //   console.log(consoleFormInput.value);
-  //   if (consoleFormInput.value === i.command) {
-  //     consoleFormInput.value = "";
-  //     i.callback();
-  //     break;
-  //   } else {
-  //     consoleFormInput.classList.add("console-bar-form__error");
-  //     consoleFormInput.value = `The term is not recognized.`;
-  //     setTimeout(() => cleanConsoleInput(), 1500);
-  //   }
-  // }
-});
+  if (consoleCommands.some(function (i) {
+    return i.command === consoleFormInput.value;
+  })) {
+    // колбєк если команда валидная
+    // перебираем массив, чтобы найти нашу команду
+    consoleCommands.forEach(function (i) {
+      if (i.command === consoleFormInput.value) {
+        i.callback(); // clearTimeout(() => cleanConsoleInput());
+      }
+    });
+    consoleFormInput.value = "";
+  } else {
+    // колбэк если команды не существует
+    consoleFormInput.classList.add("console-bar-form__error");
+    consoleFormInput.value = "The term is not recognized."; // consoleFormInput.setAttribute("disabled", "disabled");
+
+    setTimeout(function () {
+      return cleanConsoleInput();
+    }, 1200);
+  }
+}); // e.preventDefault();
+// consoleCommands.forEach((i) => {
+//   console.log(consoleFormInput.value);
+//   if (consoleFormInput.value === i.command) {
+//     consoleFormInput.value = "";
+//     i.callback();
+//   } else {
+//     consoleFormInput.classList.add("console-bar-form__error");
+//     consoleFormInput.value = `The term is not recognized.`;
+//     setTimeout(() => cleanConsoleInput(), 1500);
+//   }
+// });
+// for (let i of consoleCommands) {
+//   console.log(consoleFormInput.value);
+//   if (consoleFormInput.value === i.command) {
+//     consoleFormInput.value = "";
+//     i.callback();
+//     break;
+//   } else {
+//     consoleFormInput.classList.add("console-bar-form__error");
+//     consoleFormInput.value = `The term is not recognized.`;
+//     setTimeout(() => cleanConsoleInput(), 1500);
+//   }
+// }
+// });
 
 function setClockTime() {
   var date = new Date();
