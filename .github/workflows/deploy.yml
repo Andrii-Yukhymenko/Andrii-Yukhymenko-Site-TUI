@@ -27,4 +27,4 @@ jobs:
             cd Andrii-Yukhymenko-Site-TUI/
             sudo yarn install
             sudo yarn build
-            sudo cp -r build/* /var/www/main
+            sudo cp -r app/* /var/www/main
